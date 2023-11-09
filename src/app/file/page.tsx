@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
 
-export function File() {
+const File = () => {
   const form = useForm({
     initialValues: {
       file: null,
@@ -46,9 +46,9 @@ export function File() {
           if (sheetName) {
             const sheet = Sheets[sheetName];
             const jsonData: { [key: string]: any }[] = XLSX.utils.sheet_to_json(sheet) as { [key: string]: any }[];
-            console.log(jsonData[0],"json")
+            console.log(jsonData,"json")
             // Extract field names from the first object
-            const fieldNames = Object.keys(jsonData[0]);
+            const fieldNames = Object.keys(jsonData);
     
             // Create an array to store the transformed objects
             const transformedDataArray = jsonData.slice(1).map(obj => {
@@ -93,3 +93,6 @@ export function File() {
   );
 
   }
+
+  
+export default File;
