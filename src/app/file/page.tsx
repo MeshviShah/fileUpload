@@ -1,5 +1,5 @@
 'use client';
-import { FileInput, Button, Group, Box } from '@mantine/core';
+import { FileInput, Button, Group, Box,Paper } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
@@ -76,8 +76,9 @@ const File = () => {
     }
   }
   return (
-    <Box maw={340} mx='auto'>
-      <form onSubmit={form.onSubmit(handleSubmit)} method="POST" encType="multipart/form-data">
+    <Box maw={600} mx='auto'>
+        <Paper withBorder shadow="md" p={30} mt={80} radius="md">
+        <form onSubmit={form.onSubmit(handleSubmit)} method="POST" encType="multipart/form-data">
         <FileInput
           label='Input label'
           withAsterisk
@@ -89,6 +90,8 @@ const File = () => {
           <Button type='submit'>Submit</Button>
         </Group>
       </form>
+        </Paper>
+     
     </Box>
   );
 

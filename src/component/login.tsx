@@ -11,9 +11,11 @@ Title,
 } from '@mantine/core';
 import { useForm, isEmail, hasLength } from '@mantine/form';
 import { useMemo,useEffect,useState } from 'react';
-
+ 
+import { useRouter } from 'next/navigation';
+import axios from 'axios';
 const Login = () => {
-
+  const router = useRouter();
    const [log, setLog] = useState(false);
   const form = useForm({
     initialValues: {
@@ -30,7 +32,16 @@ const Login = () => {
   });
 
   const handleSubmit = async (values: any) => {
-    console.log(values,"values")
+   
+    const response = await axios.post('/api/user',values)
+    console.log(response)
+    if (response.status === 200 ) {
+      // Redirect to the file component
+      router.push('/file'); // Replace '/file-component' with your actual path
+    } else {
+      // Handle other response cases if needed
+      console.error('Unexpected response:', response);
+    }
   };
  
   return (
