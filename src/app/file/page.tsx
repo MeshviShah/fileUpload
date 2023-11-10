@@ -42,30 +42,22 @@ const File = () => {
         const arrayBuffer = e.target?.result;
         if (arrayBuffer) {
           const {Sheets ,SheetNames} = XLSX.read(arrayBuffer, { type: 'array' });
-          const sheetName = SheetNames[2]; 
+          const sheetName = SheetNames[0]; 
           if (sheetName) {
             const sheet = Sheets[sheetName];
             const jsonData: { [key: string]: any }[] = XLSX.utils.sheet_to_json(sheet) as { [key: string]: any }[];
             console.log(jsonData,"json")
             // Extract field names from the first object
-            const fieldNames = Object.keys(jsonData);
+            try {
+              const response = await axios.post('/api/file', { data: jsonData });
+              return response;
+              // Handle the response or perform additional actions if needed
+            } catch (error) {
+              console.error('Error storing data:', error);
+              
+            }
     
-            // Create an array to store the transformed objects
-            const transformedDataArray = jsonData.slice(1).map(obj => {
-              const transformedObject: { [key: string]: any } = {};
-              for (const fieldName of fieldNames) {
-                const value = obj[fieldName];
-                transformedObject[fieldName] = value === undefined ? null : value;
-              }
-              return transformedObject;
-            });
-    
-            // Assuming you want to store the transformed data in a database (replace this with your database logic)
-            // Example using a hypothetical database function 'storeDataInDB'
-            transformedDataArray.forEach(data => {
-              // Replace 'storeDataInDB' with your actual database function
-              console.log(data)
-            });
+           
           }
         }
       };

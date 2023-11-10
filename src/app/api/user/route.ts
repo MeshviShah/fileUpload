@@ -4,6 +4,7 @@ import User from "../../modal/user.modal";
 import dbcon from '../../config/db.config'
 
 export async function POST(req: any, res: NextApiResponse) {
+  dbcon();
     const { email, password } = await req.json();
 try{
     const user = await User.findOne({ email });
