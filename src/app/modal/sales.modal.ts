@@ -1,88 +1,88 @@
 import mongoose, { Document, Schema } from 'mongoose';
 
-interface ISheet extends Document {
-  Store_Code: number;
-  Store_Name: string;
-  Period: number;
-  Week: string;
-  Code: string;
-  Date: string;
-  Day: string;
-  Day_No:number;
-  Store_Sales:number;
-  Uber_Eats:number;
-  Grubhub: number;
-  Doordash: number;
-  Total_Sales: number;
-  Budgeted_Sales: number;
-  Customer_Count: number;
-  Average_Ticket_Size_PY: number;
-  Labour_Hours: number;
-  OT_Hr:number;
-  Total_Hour:number;
-  OTD$_OY_Pay: number;
-  Schadual_Hr:number;
-  Actual_Food_Cost:number;
-  Actual_Food_Cost_Percent:number;
-  Employee_Productivity:number;
-  Mclane_Purchase:number;
-  Mclane_Percent:number;
-  Drinks_Per_Tran: number;
-  Cash_Over_Short: number;
-  Labour_Cost: number;
-  Labor_Percent: number;
-  ICOS_Var_Percent: number;
-  Labor_Var_h: number;
-  Deletions_After: number;
-  Drinks_Order:number;
-  Delivery_Sales: number;
-  Kiosk_Sales: number;
-  Mobile_Sales: number;
-  Employee_Meal: number | null;
+interface ITacoBell extends Document {
+  storeCode: number;
+  storeName: string;
+  period: number;
+  week: number;
+  code: string;
+  date: Date;
+  day: string;
+  dayNo: number;
+  storeSales: number;
+  uberEats: number;
+  grubhub: number;
+  doordash: number;
+  totalSales: number;
+  budgetedSales: number;
+  customerCount: number;
+  averageTicketSizePY: number;
+  labourHours: number;
+  otHr: number;
+  totalHour: number;
+  otdOYPay: number;
+  schadualHr: number;
+  actualFoodCost: number;
+  actualFoodCostPercent: number;
+  employeeProductivity: number;
+  mclanePurchase: number;
+  mclanePercent: number;
+  drinksPerTran: number;
+  cashOverShort: number;
+  labourCost: number;
+  laborPercent: number;
+  icosVarPercent: number;
+  laborVarH: number;
+  deletionsAfter: number;
+  drinksOrder: number;
+  deliverySales: number;
+  kioskSales: number;
+  mobileSales: number;
+  employeeMeal: number ;
 }
 
-const SheetSchema: Schema<ISheet> = new Schema(
+const TacoBellSchema: Schema<ITacoBell> = new Schema(
   {
-    Store_Code: { type: Number, unique: false, required: false },
-    Store_Name: { type: String, required: false },
-    Period: { type: Number, required: false },
-    Week: { type: String, required: false },
-    Code: { type: String, required: false },
-    Date: { type: String, required: false },
-    Day: { type: String, required: false },
-    Day_No: { type: Number, required: false },
-    Store_Sales: { type: Number, required: false },
-    Uber_Eats: { type: Number, required: false },
-    Grubhub: { type: Number, required: false },
-    Doordash: { type: Number, required: false },
-    Total_Sales: { type: Number, required: false },
-    Budgeted_Sales: { type: Number, required: false },
-    Customer_Count: { type: Number, required: false },
-    Average_Ticket_Size_PY: { type: Number, required: false },
-    Labour_Hours: { type: Number, required: false },
-    OT_Hr: { type: Number, required: false },
-    Total_Hour: { type: Number, required: false },
-    OTD$_OY_Pay: { type: Number, required: false },
-    Schadual_Hr: { type: Number, required: false },
-    Actual_Food_Cost: { type: Number, required: false },
-    Actual_Food_Cost_Percent: { type: Number, required: false },
-    Employee_Productivity: { type: Number, required: false },
-    Mclane_Purchase: { type: Number, required: false },
-    Mclane_Percent: { type: Number, required: false },
-    Drinks_Per_Tran: { type: Number, required: false },
-    Cash_Over_Short: { type: Number, required: false },
-    Labour_Cost: { type: Number, required: false },
-    Labor_Percent: { type: Number, required: false },
-    ICOS_Var_Percent: { type: Number, required: false },
-    Labor_Var_h: { type: Number, required: false },
-    Deletions_After: { type: Number, required: false },
-    Drinks_Order: { type: Number, required: false },
-    Delivery_Sales: { type: Number, required: false },
-    Kiosk_Sales: { type: Number, required: false },
-    Mobile_Sales: { type: Number, required: false },
-    Employee_Meal: { type: Number, default: null },
+    storeCode: { type: Number, unique: false, required: false },
+    storeName: { type: String, required: false },
+    period: { type:  Number, required: false },
+    week: { type: Number, required: false },
+    code: { type: String, required: false },
+    date: { type:Date, required: false },
+    day: { type: String, required: false },
+    dayNo: { type: Number, required: false },
+    storeSales: { type: Number, required: false },
+    uberEats: { type: Number, required: false },
+    grubhub: { type: Number, required: false },
+    doordash: { type: Number, required: false },
+    totalSales: { type: Number, required: false },
+    budgetedSales: { type: Number, required: false },
+    customerCount: { type: Number, required: false },
+    averageTicketSizePY: { type: Number, required: false },
+    labourHours: { type: Number, required: false },
+    otHr: { type: Number, required: false },
+    totalHour: { type: Number, required: false },
+    otdOYPay: { type: Number, required: false },
+    schadualHr: { type: Number, required: false },
+    actualFoodCost: { type: Number, required: false },
+    actualFoodCostPercent: { type: Number, required: false },
+    employeeProductivity: { type: Number, required: false },
+    mclanePurchase: { type: Number, required: false },
+    mclanePercent: { type: Number, required: false },
+    drinksPerTran: { type: Number, required: false },
+    cashOverShort: { type: Number, required: false },
+    labourCost: { type: Number, required: false },
+    laborPercent: { type: Number, required: false },
+    icosVarPercent: { type: Number, required: false },
+    laborVarH: { type: Number, required: false },
+    deletionsAfter: { type: Number, required: false },
+    drinksOrder: { type: Number, required: false },
+    deliverySales: { type: Number, required: false },
+    kioskSales: { type: Number, required: false },
+    mobileSales: { type: Number, required: false },
+    employeeMeal: { type: Number, default: null },
   },
   { timestamps: true, strict: false }
 );
 
-export default mongoose.models.Sheet as mongoose.Model<ISheet> || mongoose.model<ISheet>('Sheet', SheetSchema);
+export default mongoose.models.TacoBell as mongoose.Model<ITacoBell> || mongoose.model<ITacoBell>('tacobell', TacoBellSchema);

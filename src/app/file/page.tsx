@@ -46,6 +46,16 @@ const File = () => {
           if (sheetName) {
             const sheet = Sheets[sheetName];
             const jsonData: { [key: string]: any }[] = XLSX.utils.sheet_to_json(sheet) as { [key: string]: any }[];
+             await jsonData.map((item) => {
+              if (item.date) {
+                console.log(item.date,"date")
+                const [day, month, year] = item.date.split('-');
+    
+                // Note: Month is 0-based in JavaScript Date object, so subtract 1 from the month
+                item.date = new Date(year, month - 1, day);
+                console.log(item.date,"new")
+              }
+            });
             console.log(jsonData,"json")
             // Extract field names from the first object
             try {
